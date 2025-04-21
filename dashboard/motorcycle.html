@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student AA1 (Motorcycle)</title>
+    <link rel="stylesheet" href="../assets/styles/lesson-style.css">
+</head>
+<body>
+    <div class="lesson-container">
+        <h1>Student AA1 (Motorcycle) (PDF)</h1>
+
+        <iframe src="../lessons/4_motor_vehicle.pdf" width="100%" height="600px" style="border: none;"></iframe>
+
+        <div class="navigation">
+            <button onclick="goToDashboard()" class="dashboard-button">Back to Dashboard</button>
+            <button onclick="markAsCompleted(3, 4)" class="complete-button">Mark as Completed</button>
+            <a href="motor_vehicle.html" class="next-button">Next Lesson: Student BB1 / B2 (Motor Vehicle)</a>
+        </div>
+    </div>
+
+    <script src="../assets/student.js"></script>
+    <script>
+        function goToDashboard() {
+            window.location.href = "student.html";
+        }
+
+        function markAsCompleted(currentLessonId, nextLessonId) {
+            fetch("../api/save_progress.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `lesson_id=${currentLessonId}&completion_percentage=100`
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Lesson marked as completed! The next lesson is now unlocked.");
+                window.location.href = "student.html";
+            })
+            .catch(error => console.error("Error saving progress:", error));
+        }
+    </script>
+</body>
+</html>

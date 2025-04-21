@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../assets/styles/student-dash.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <button class="nav-button" onclick="goToProgress()">View Progress</button>
+            <button class="nav-button" onclick="goToPayment()">Payment</button>
+            <button class="nav-button" onclick="goToChatbot()">Ask AI</button>
+            <button class="nav-button logout" onclick="logout()">Logout</button>
+            <div class="logo">
+                <img src="../assets/logo.png" alt="MSSB Logo">
+            </div>
+        </nav>
+
+        <div class="ai-schedule">
+            <h2>AI Recommended Schedule</h2>
+            <p id="scheduleRecommendation">Fetching recommendation...</p>
+        </div>
+        
+        <script src="../assets/ai-schedule.js"></script>        
+
+        <div class="dashboard-content">
+            <div class="progress-check">
+                <h2>Progress Check</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">0%</div>
+                </div>
+            </div>
+
+            <div class="theoretical-course">
+                <h2>Theoretical Driving Course</h2>
+                <div class="day-container">
+                    <div class="day">
+                        <h3>Day 1</h3>
+                        <div class="lesson-buttons">
+                            <button class="lesson-button" onclick="openLesson('introduction.html')" id="lesson1">Introduction</button>
+                            <button class="lesson-button locked" onclick="openLesson('road_traffic_rules.html')" id="lesson2" disabled>Road and Traffic Rules</button>
+                            <button class="lesson-button locked" onclick="openLesson('motorcycle.html')" id="lesson3" disabled>Student AA1 (Motorcycle)</button>
+                            <button class="lesson-button locked" onclick="openLesson('motor_vehicle.html')" id="lesson4" disabled>Student BB1 / B2 (Motor Vehicle)</button>
+                            <button class="lesson-button locked" onclick="openLesson('day1_test1.html')" id="lesson5" disabled>Day 1 Assessment Test (Part 1)</button>
+                            <button class="lesson-button locked" onclick="openLesson('day1_test2.html')" id="lesson6" disabled>Day 1 Assessment Test (Part 2)</button>
+                        </div>
+                    </div>
+                    
+                    <div class="day">
+                        <h3>Day 2</h3>
+                        <div class="lesson-buttons">
+                            <button class="lesson-button locked" onclick="openLesson('defensive_driving.html')" id="lesson7" disabled>Defensive Driving</button>
+                            <button class="lesson-button locked" onclick="openLesson('emergencies.html')" id="lesson8" disabled>Handling Emergencies</button>
+                            <button class="lesson-button locked" onclick="openLesson('special_laws.html')" id="lesson9" disabled>Special Laws</button>
+                            <button class="lesson-button locked" onclick="openLesson('active_transport.html')" id="lesson10" disabled>GAD and Active Transport</button>
+                            <button class="lesson-button locked" onclick="openLesson('final_test.html')" id="lesson11" disabled>Final Assessment Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/scripts/student.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../api/get_progress.php")
+                .then(response => response.json())
+                .then(progressData => {
+                    updateProgressUI(progressData);
+                })
+                .catch(error => console.error("Error fetching progress:", error));
+        });
+
+        function updateProgressUI(progressData) {
+            let totalLessons = 11;
+            let completedLessons = Object.keys(progressData).length;
+            let progressPercentage = (completedLessons / totalLessons) * 100;
+
+            document.getElementById("progressFill").style.width = progressPercentage + "%";
+            document.getElementById("progressFill").textContent = Math.round(progressPercentage) + "%";
+
+            Object.keys(progressData).forEach(lesson => {
+                let lessonButton = document.getElementById(`lesson${lesson}`);
+                if (lessonButton) {
+                    lessonButton.classList.remove("locked");
+                    lessonButton.disabled = false;
+                }
+            });
+        }
+
+        function openLesson(lessonPage) {
+            window.location.href = lessonPage;
+        }
+    </script>
+</body>
+</html>
