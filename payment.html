@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <link rel="stylesheet" href="assets/styles/payment-style.css"> 
+</head>
+<body>
+
+    <div class="container">
+        <h2>Payment</h2>
+        <div class="payment-box">
+            <h3>Payment Details</h3>
+            <p>2-Day Online Driving Course ---------------- P1000</p>
+            <p>Total -------------------------------- P1000</p>
+
+            <!-- Payment Method Options (Now using radio buttons) -->
+            <form id="payment-form">
+                <label>
+                    <input type="radio" name="payment_method" value="cash"> Pay with Cash
+                </label><br>
+                <label>
+                    <input type="radio" name="payment_method" value="gcash"> Pay with GCash
+                </label><br>
+                <label>
+                    <input type="radio" name="payment_method" value="bank_transfer"> BDO Bank Transfer
+                </label>
+            </form>
+
+            <div class="payment-details"></div>
+
+            <button id="confirm-payment">Confirm Payment</button>
+
+            <!-- Back to Dashboard Button -->
+            <button id="back-to-dashboard">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script src="assets/payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - MSSB Driving Institute</title>
+    <link rel="stylesheet" href="assets/styles/signup-style.css">
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+
+        <input type="text" id="full-name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="otp" placeholder="Enter OTP" required>
+        <button id="send-otp">Send OTP</button>
+
+        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="confirm-password" placeholder="Confirm Password">
+        <p id="password-strength"></p>
+
+        <select id="role">
+            <option value="">Select Role</option>
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button id="signup-btn">Signup</button>
+
+        <p>Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+
+    <script src="assets/signup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MSSB Driving Institute</title>
+    <link rel="stylesheet" href="assets/styles/index-style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <img src="assets/logo.png" alt="MSSB Driving Institute Logo" class="logo">
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+
+        <p class="switch-form">Don't have an account? <a href="signup.html">Sign up here</a></p>
+        <p class="switch-form"><a href="dashboard/forgot_password.html">Forgot Password?</a></p> <!-- Added Forgot Password -->
+    </form>
+</div>
+
+<script src="assets/login.js"></script>  
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        login(); // Call the login function from login.js
+    });
+</script>
+
+</body>
+</html>

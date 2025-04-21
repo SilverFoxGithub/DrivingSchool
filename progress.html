@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Progress | MSSB Driving School</title>
+    <link rel="stylesheet" href="assets/styles/progress-style.css"> <!-- Link to updated green theme -->
+</head>
+<body>
+
+    <div class="container">
+        <h2>Lesson Progress</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Lesson Name</th>
+                    <th>Status</th>
+                    <th>Completion Date</th>
+                </tr>
+            </thead>
+            <tbody id="progress-table">
+                <!-- Data will be loaded dynamically -->
+            </tbody>
+        </table>
+
+        <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "dashboard/student.html"; // Adjust if needed
+        }
+
+        function loadProgress() {
+            fetch('api/progress.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById("progress-table");
+                    tableBody.innerHTML = ""; // Clear existing rows
+
+                    if (data.length === 0) {
+                        tableBody.innerHTML = "<tr><td colspan='3'>No progress records found.</td></tr>";
+                        return;
+                    }
+
+                    data.forEach(item => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${item.lesson_name}</td>
+                            <td>${item.status}</td>
+                            <td>${item.completion_date ? item.completion_date : 'N/A'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading progress:", error);
+                });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadProgress);
+    </script>
+
+</body>
+</html>

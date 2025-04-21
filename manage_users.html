@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Manage Users</h1>
+
+    <h2>Add New User</h2>
+    <form action="api/add_user.php" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <select name="role" required>
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Add User</button>
+    </form>
+
+    <h2>User List</h2>
+    <div id="user-list">
+        <!-- Users will be loaded here via AJAX -->
+    </div>
+
+    <br>
+    <a href="admin.html">Back to Admin Dashboard</a>
+</div>
+
+<script>
+    function loadUsers() {
+        fetch('api/get_users.php')
+            .then(response => response.json())
+            .then(data => {
+                const userList = document.getElementById('user-list');
+                userList.innerHTML = '<ul>' + data.map(user => `
+                    <li>
+                        ${user.username} (${user.role})
+                        <button onclick="deleteUser(${user.id})">Delete</button>
+                    </li>
+                `).join('') + '</ul>';
+            });
+    }
+
+    function deleteUser(id) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            fetch(`api/delete_user.php?id=${id}`, { method: 'GET' })
+                .then(() => loadUsers());
+        }
+    }
+
+    loadUsers();
+</script>
+
+</body>
+</html>
