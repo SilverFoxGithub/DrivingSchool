@@ -1,0 +1,133 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f7f0; /* Very light green background */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #00897b; /* Teal navbar */
+    border-radius: 8px 8px 0 0;
+}
+
+.nav-button, .nav-button.logout {
+    background-color: #fff;
+    color: #00897b; /* Teal button text */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.dashboard-content {
+    padding: 20px;
+}
+
+.progress-check {
+    margin-bottom: 5px; /* Reduced margin */
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative; /* Add this */
+    height: 30px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    text-align: center; 
+    line-height: 30px; /* Adjust this to vertically center */
+    font-weight: bold;
+    color: white;
+    position: absolute; /* Add this */
+    left: 0;
+    top: 0;
+    width: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Ensures it stays centered */
+}
+
+.theoretical-course {
+    text-align: center;
+}
+
+.day-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.day {
+    width: 45%;
+    margin: 0 10px;
+    text-align: left;
+    background-color: #dcedc8; /* Less saturated green */
+    padding: 20px; /* Increased padding */
+    border-radius: 8px;
+}
+
+.lesson-buttons {
+    margin-top: 5px; /* Reduced margin */
+}
+
+.lesson-button {
+    display: block;
+    width: 100%;
+    padding: 8px 15px; /* Reduced padding */
+    margin-bottom: 3px; /* Reduced margin */
+    background-color: #c8e6c9;
+    border: 1px solid #a5d6a7;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lesson-button:hover {
+    background-color: #b2dfdb;
+}
+
+.locked {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.locked:hover {
+    background-color: #f0f0f0;
+}
+
+.ai-schedule {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}

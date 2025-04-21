@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dfffe0; /* Light Green Background */
+}
+
+/* Centered Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+h2 {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    padding: 15px;
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Payment Box */
+.payment-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Payment Details */
+.payment-box h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.payment-box p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Payment Options */
+.payment-options {
+    margin: 20px 0;
+}
+
+.payment-option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.payment-option:hover {
+    background-color: #27ae60;
+}
+
+/* Payment Details Display */
+.payment-details {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Confirm Button */
+#confirm-payment {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#confirm-payment:hover {
+    background-color: #27ae60;
+}
+
+/* Back to Dashboard Button */
+#back-to-dashboard {
+    background-color: #3498db; /* Blue */
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#back-to-dashboard:hover {
+    background-color: #2980b9;
+}
