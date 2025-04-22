@@ -4,7 +4,9 @@ header("Content-Type: application/json");
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$api_key = "AIzaSyBYt7lczLeGw-O6-J0e5BeM3dCI9zFnyBs"; // Your Gemini API key
+include 'config.php'; // Include config file
+
+$api_key = $gemini_api_key; // Get API key from config
 
 $data = json_decode(file_get_contents("php://input"), true);
 $user_message = $data['message'] ?? '';
